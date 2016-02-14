@@ -22,3 +22,5 @@ twbs:bootstrap
 ian:accounts-ui-bootstrap-3
 accounts-google
 dburles:google-maps
+iron:router
+sacha:spin
