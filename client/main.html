@@ -3,8 +3,9 @@
 </head>
 
 <body>
+
 <div class="container">	
-	
+
 <header>
   <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
@@ -22,24 +23,25 @@
           {{> loginButtons}}
         </ul>
       </div>
+      <div class="col-sm-3 col-md-3">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div> 
     </div>
   </nav>
  </header>
- 
 
-<div id="custom-search-input">
-  <div class="input-group col-md-12">
-        <input type="text" class="  search-query form-control" placeholder="Search" />
-    <span class="input-group-btn">
-        <button class="btn btn-danger" type="button">
-          <span class=" glyphicon glyphicon-search"></span>
-        </button>
-    </span>
-  </div>
+
+<div class="map-container">
+  {{> googleMap name="exampleMap" options=exampleMapOptions}}
 </div>
 
-  <div class="map-container">
-    {{> googleMap name="exampleMap" options=exampleMapOptions}}
-  </div>
 </div> <!-- container -->
+
 </body>
