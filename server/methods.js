@@ -18,6 +18,7 @@ Meteor.methods({
 		"&client_secret=" + CLIENT_SECRET +
 		"&v=20140806" +
 		"&ll=" + LatLng.lat + "," + LatLng.lng +
+		"&radius=" + 500 +
 		"&query=" + input;
 
 		return HTTP.get(request);
@@ -34,8 +35,12 @@ Meteor.methods({
 				lat: request.data.response.venues[i].location.lat,
 				lng: request.data.response.venues[i].location.lng
 			};
+
 			venues.push(venue);
 		}
+
+// return request.data.response.venues.map(venue => _.pick(venue, [name,city,address,lat,lng])
+
 		return(venues);
 	},
 

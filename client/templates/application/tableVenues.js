@@ -6,7 +6,7 @@ Template.tableVenues.helpers({
 		return Session.get('venues').length;
 	},
 	venuesExist: function() {
-		return Session.get('venues') != null;
+		return Session.get('venues') != null && Session.get('venues').length != 0;
 	},
 });
 
@@ -20,5 +20,4 @@ Template.tableVenues.events({
 			}
 		});
 	},
-
 });
