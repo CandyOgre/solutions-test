@@ -4,38 +4,17 @@
 
 <body>
 	<div class="container">	
-
 		<!-- Header -->
-		<header>
-			<nav class="navbar navbar-default" role="navigation">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand">JSSolutions test</a>
-					</div>
-					<div class="collapse navbar-collapse" id="navigation">
-						<ul class="nav navbar-nav navbar-right">
-							{{> loginButtons}}
-						</ul>
-					</div> 
-
-				</div>
-			</nav>
-		</header>
+		{{> header}}
 
 		<!-- Search queries -->
-		<div class="row-fluid">
-			<ul>
-			  {{#each queries}}
-			    {{> query}}
-			  {{/each}}
-			</ul>
-		</div>
+		<table class="table">
+			<tbody>
+				{{#each queries}}
+			      {{> query}}
+				{{/each}}
+			</tbody>
+		</table>
 
 		<!-- Search field -->
 		{{#if currentUser}}
@@ -50,28 +29,14 @@
 			</div>
 		</div>
 		{{/if}}
-
+		
 		<!-- Map -->
 		<div class="map-container">
 			{{> googleMap name="exampleMap" options=exampleMapOptions}}
 		</div>
 
-		<!-- Label -->
-		<div>
-			<p>
-				{{numberOfVenues}} venues
-				<button class="btn btn-success" id="exportBtn">Export CSV</button>
-			</p>
-		</div>
-
-		<!-- Venues -->
-		<div class="row-fluid">
-			<!-- <ul>
-			  {{#each venues}}
-			    {{> venue}}
-			  {{/each}}
-			</ul> -->
-		</div>
+		<!-- Table with venues -->
+		{{> tableVenues}}
 
 	</div>
 </body>

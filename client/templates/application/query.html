@@ -1,6 +1,10 @@
 <template name="query">
-  <li>
-  	<button class="delete">&times;</button>
-  	<span class="text">{{text}}{{latitude}}{{longitude}}{{radius}}{{createdAt}}</span>
-  </li>
+	<tr>
+		<button class="delete">&times;</button>
+		<td>{{text}}</td>
+		<td>{{latitude}}</td>
+		<td>{{longitude}}</td>
+		<td>{{radius}}</td>
+		<td>{{createdAt}}</td>
+	</tr>
 </template>

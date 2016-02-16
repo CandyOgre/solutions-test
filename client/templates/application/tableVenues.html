@@ -1,0 +1,38 @@
+<template name="tableVenues">
+	{{#if venuesExist}}
+	<!-- Label -->
+	<div>
+		<br>
+		<p>
+			<h3>Venues from Your last search</h3>
+			{{numberOfVenues}} venues
+			<button class="btn btn-success pull-right" id="export-btn" >Export CSV</button>
+		</p>
+	</div>
+	<!-- Venues -->
+    <table class="table table-hover" id="table_venues">
+        <thead>
+        <tr>
+            <td>Name</td>
+            <td>City</td>
+            <td>Address</td>
+            <td>Latitude</td>
+            <td>Longitude</td>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each venues}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{city}}</td>
+                <td>{{address}}</td>
+                <td>{{lat}}</td>
+                <td>{{lng}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    {{else}}
+    <h3>Sorry, we can`t find places that matches your input...</h3>
+    {{/if}}
+</template>
