@@ -39,17 +39,6 @@ Meteor.methods({
 		return(venues);
 	},
 
-	addMarker: function() {
-		var myLatLng = {lat: -37.8136, lng: 144.9631};
-
-		var marker = new google.maps.Marker({
-			position: myLatLng,
-			map: GoogleMaps.maps.exampleMap.instance,
-			title: 'Hello World!'
-		});
-
-	},
-
 	download: function(collectionToDownload) {
 		var collection = collectionToDownload;
 	    var heading = true; // Optional, defaults to true

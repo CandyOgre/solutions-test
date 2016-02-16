@@ -1,6 +1,6 @@
 Meteor.subscribe('queries');
 
-
+var markers = [];
 var mapZoom = 18;
 
 // var t = Geolocation.latLng;
@@ -9,8 +9,8 @@ var LatLng;
 // if(Geolocation.latLng() != null)
 //   LatLng = {lat: Geolocation.latLng.lat, lng: Geolocation.latLng.lng};
 // else
-  LatLng = {lat: -37.8136, lng: 144.9631};
-// LatLng = {lat: 35.70, lng: 139.70};  // Tokyo
+// LatLng = {lat: -37.8136, lng: 144.9631};
+LatLng = {lat: 35.70, lng: 139.70};  // Tokyo
 
 Template.body.helpers({
   exampleMapOptions: function() {
@@ -60,8 +60,7 @@ Template.body.events({
     });
 
     // call method to  add markers to map
-    Meteor.call('addMarker');
-    // call method to add venues to a list
+    Meteor.call('setNewMarkers', Session.get('venues'), map, function() {});    
 
   },
 
@@ -69,15 +68,4 @@ Template.body.events({
 
 Template.body.onRendered(function() {
   GoogleMaps.load();
-});
-
-Template.body.onCreated(function() {
-  // We can use the `ready` callback to interact with the map API once the map is ready.
-  GoogleMaps.ready('exampleMap', function(map) {
-    // Add a marker to the map once it's ready
-    var marker = new google.maps.Marker({
-      position: map.options.center,
-      map: map.instance
-    });
-  });
 });
