@@ -1,6 +1,10 @@
 Meteor.subscribe('queries');
 
-Template.body.helpers({
+Template.mainPage.onRendered(function() {
+  GoogleMaps.load();
+});
+
+Template.mainPage.helpers({
   exampleMapOptions: function() {
       // Make sure the maps API has loaded
       if (GoogleMaps.loaded()) {
@@ -11,12 +15,10 @@ Template.body.helpers({
         };
       }
     },
-    queries: function() {
-      return Queries.find({owner: Meteor.userId()});
-    },
+
   });
 
-Template.body.events({
+Template.mainPage.events({
   'click #search': function() {
     var input = $("input").val();
     if(_.isEmpty(input)) {
@@ -30,25 +32,23 @@ Template.body.events({
       lng: map.instance.center.lng()
     };
 
+    // Add search query to collection
     Meteor.call('addQuery', { 
       owner: Meteor.userId(),
       text: input,
       latitude: LatLng.lat,
       longitude: LatLng.lng,
       radius: (map.instance.zoom + 'km'),
-      createdAt: new Date()
+      createdAt: moment().format("MMM D h:mm")
     });
 
-    // call method to find venues in Foursquare and receive data
-    Meteor.call('getVenues', LatLng, input, function(error, result) {
-      if(result != null) {
-        Meteor.call('simplifyData', result, function(error, result) {
-          if(result != null)
-            Session.set('venues', result);
-        });
-      }
+    // get data from API request and set in Session variable
+    Meteor.call('getSimplifyData', LatLng, input, function(error, result) {
+      if(result != null)
+        Session.set('venues', result);
     });
 
+    // delete old markers and set new
     deleteMarkers();
     setNewMarkers(Session.get('venues'), map);
   },
@@ -87,9 +87,9 @@ function addMarker(location) {
 
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {
-    for (var i = 0; i < markers.length; i++) {
-      markers[i].setMap(map ? map.instance : null);
-    }
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map ? map.instance : null);
+  }
 }
 
 // Deletes all markers in the array by removing references to them.
@@ -97,16 +97,3 @@ function deleteMarkers() {
   setMapOnAll(null);
   markers = [];
 }
-
-
-
-
-
-
-
-
-
-
-Template.body.onRendered(function() {
-  GoogleMaps.load();
-});

@@ -1,4 +1,5 @@
 <template name="tableVenues">
+
 	{{#if venuesExist}}
 	<!-- Label -->
 	<div>
@@ -21,6 +22,7 @@
         </tr>
         </thead>
         <tbody>
+
         {{#each venues}}
             <tr>
                 <td>{{name}}</td>
@@ -30,9 +32,12 @@
                 <td>{{lng}}</td>
             </tr>
         {{/each}}
+        
         </tbody>
     </table>
+
     {{else}}
     <h3>Sorry, we can`t find places that matches your input...</h3>
+
     {{/if}}
 </template>

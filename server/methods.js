@@ -9,7 +9,8 @@ Meteor.methods({
 		Queries.remove(queryId);
 	},
 
-	getVenues: function(LatLng, input) {
+	getSimplifyData: function(LatLng, input) {
+
 		const CLIENT_ID = 'ZBFC3BYIZATNLHX1FDKFLQXONCQLFDVDDJDFQIMB12D5CCIT';
 		const CLIENT_SECRET = 'NJLRNBE5NYHZO2SUHR0OKEVGOVIFEFUOUYYIBN4U2EGU4BKR';
 
@@ -21,27 +22,22 @@ Meteor.methods({
 		"&radius=" + 500 +
 		"&query=" + input;
 
-		return HTTP.get(request);
-	},
-
-	simplifyData: function(request) {
+		var response = HTTP.get(request).data.response;
 		var venues = [];
 
-		for(var i = 0; i < request.data.response.venues.length; i++) {
+		for(var i = 0; i < response.venues.length; i++) {
 			var venue = {
-				name: request.data.response.venues[i].name,
-				city: request.data.response.venues[i].location.city,
-				address: request.data.response.venues[i].location.address,
-				lat: request.data.response.venues[i].location.lat,
-				lng: request.data.response.venues[i].location.lng
+				name: response.venues[i].name,
+				city: response.venues[i].location.city,
+				address: response.venues[i].location.address,
+				lat: response.venues[i].location.lat,
+				lng: response.venues[i].location.lng
 			};
 
 			venues.push(venue);
 		}
-
-// return request.data.response.venues.map(venue => _.pick(venue, [name,city,address,lat,lng])
-
 		return(venues);
+		//return request.data.response.venues.map(venue => _.pick(venue, [name,city,address,lat,lng]);
 	},
 
 	download: function(collectionToDownload) {

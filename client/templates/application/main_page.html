@@ -1,0 +1,26 @@
+<template name="mainPage">
+		<!-- Search queries -->
+		{{> queries}}
+
+		<!-- Search field -->
+		{{#if currentUser}}
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button" id="search">Go!</button>
+					</span>
+					<input type="text" class="form-control" placeholder="Search for...">
+				</div>
+			</div>
+		</div>
+		{{/if}}
+		
+		<!-- Map -->
+		<div class="map-container">
+			{{> googleMap name="exampleMap" options=exampleMapOptions}}
+		</div>
+
+		<!-- Table with venues -->
+		{{> tableVenues}}
+</template>

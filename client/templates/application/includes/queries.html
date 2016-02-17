@@ -1,0 +1,17 @@
+<template name="queries">
+	<table class="table">
+		<tbody>
+			{{#each queries}}
+			<tr>
+				<button class="delete">&times;</button>
+				<td>{{text}}</td>
+				<td>{{latitude}}</td>
+				<td>{{longitude}}</td>
+				<td>{{radius}}</td>
+				<td>{{createdAt}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+
+</template>
