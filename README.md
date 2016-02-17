@@ -4,3 +4,10 @@
 
 ###Screenshot (zoom reduced)
 ![Screenshot!](http://i66.tinypic.com/10i9rhc.png)
+
+###Technologies stack
+* first
+* sexon
+* * sexon
+* * sexon
+* * sexon
