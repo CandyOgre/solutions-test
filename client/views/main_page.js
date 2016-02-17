@@ -48,52 +48,7 @@ Template.mainPage.events({
         Session.set('venues', result);
     });
 
-    // delete old markers and set new
-    deleteMarkers();
     setNewMarkers(Session.get('venues'), map);
   },
 
 });
-
-
-
-
-
-var markers = [];
-
-function setNewMarkers(venues, map) {
-  if(venues == null) {
-   console.log('No venues');
-   return;
- }
- else {
-   console.log('Venues received');
- }
-
- for (var i = 0; i < venues.length; i++) {
-  var location = new google.maps.LatLng(venues[i].lat, venues[i].lng);
-  addMarker(location);
-}
-setMapOnAll(map);
-}
-
-function addMarker(location) {
-  var marker = new google.maps.Marker({
-    position: location,
-    map: GoogleMaps.maps.exampleMap.instance
-  });
-  markers.push(marker);
-}
-
-// Sets the map on all markers in the array.
-function setMapOnAll(map) {
-  for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(map ? map.instance : null);
-  }
-}
-
-// Deletes all markers in the array by removing references to them.
-function deleteMarkers() {
-  setMapOnAll(null);
-  markers = [];
-}

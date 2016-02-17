@@ -37,7 +37,6 @@ Meteor.methods({
 			venues.push(venue);
 		}
 		return(venues);
-		//return request.data.response.venues.map(venue => _.pick(venue, [name,city,address,lat,lng]);
 	},
 
 	download: function(collectionToDownload) {
