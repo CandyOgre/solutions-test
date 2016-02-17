@@ -1,4 +1,4 @@
-JSSolutions Test Task :pray:
+#JSSolutions Test Task :pray:
 
 #####Check it on [*.meteor.com](http://maksimkasolutions.meteor.com/)
 
