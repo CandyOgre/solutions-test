@@ -36,7 +36,7 @@ Meteor.methods({
 
 			venues.push(venue);
 		}
-		return(venues);
+		return venues;
 	},
 
 	download: function(collectionToDownload) {
