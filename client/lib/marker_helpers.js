@@ -17,7 +17,7 @@ setNewMarkers = function(venues, map) {
   setMapOnAll(map);
 }
 
-addMarker = function(location) {
+var addMarker = function(location) {
   var marker = new google.maps.Marker({
     position: location,
     map: GoogleMaps.maps.exampleMap.instance
@@ -26,14 +26,14 @@ addMarker = function(location) {
 }
 
 // Sets the map on all markers in the array.
-setMapOnAll = function(map) {
+var setMapOnAll = function(map) {
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(map ? map.instance : null);
   }
 }
 
 // Deletes all markers in the array by removing references to them.
-deleteMarkers = function() {
+var deleteMarkers = function() {
   setMapOnAll(null);
   markers = [];
 }
