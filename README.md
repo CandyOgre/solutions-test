@@ -1,7 +1,5 @@
 #JSSolutions Test Task :pray:
 
-#####Check it on [*.meteor.com](http://maksimkasolutions.meteor.com/)
-
 ###Screenshot (zoom reduced)
 ![Screenshot!](http://i66.tinypic.com/10i9rhc.png)
 
